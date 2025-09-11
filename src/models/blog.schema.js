@@ -1,21 +1,57 @@
 import mongoose, { Schema } from "mongoose";
 
+// ==============================
 // Définition du schéma de Blog
+// ==============================
 const blogSchema = new mongoose.Schema(
   {
+    // ------------------------------
     // Titre obligatoire, minimum 3 caractères
-    title: { type: String, required: true, minLength: 3 },
+    // ------------------------------
+    title: {
+      type: String,
+      required: true,
+      minLength: 3,
+    },
 
+    // ------------------------------
+    // Phrase d’accroche obligatoire (max 150 caractères)
+    // ------------------------------
+    tagline: {
+      type: String,
+      required: true,
+      maxLength: 150,
+    },
+
+    // ------------------------------
     // Contenu obligatoire, minimum 10 caractères (au lieu de 50 pour assouplir)
-    content: { type: String, required: true, minLength: 10 },
+    // ------------------------------
+    content: {
+      type: String,
+      required: true,
+      minLength: 10,
+    },
 
-    // URL de l'image optionnelle
-    image: { type: String, default: null },
+    // ------------------------------
+    // URL de l'image optionnelle (stockée sur Supabase)
+    // ------------------------------
+    image: {
+      type: String,
+      default: null,
+    },
 
+    // ------------------------------
     // Auteur obligatoire (référence à un utilisateur)
-    author: { type: Schema.Types.ObjectId, ref: "User", required: true },
+    // ------------------------------
+    author: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
 
+    // ------------------------------
     // Liste des utilisateurs qui ont consulté l'article (optionnel)
+    // ------------------------------
     viewedBy: {
       type: [{ type: Schema.Types.ObjectId, ref: "User" }],
       default: [],
@@ -27,7 +63,9 @@ const blogSchema = new mongoose.Schema(
   }
 );
 
+// ==============================
 // Création du modèle basé sur le schéma
+// ==============================
 const Blog = mongoose.model("Blog", blogSchema);
 
 export default Blog;
