@@ -24,7 +24,7 @@ const blogSchema = new mongoose.Schema(
     },
 
     // ------------------------------
-    // Contenu obligatoire, minimum 10 caractères (au lieu de 50 pour assouplir)
+    // Contenu obligatoire, minimum 10 caractères
     // ------------------------------
     content: {
       type: String,
@@ -50,7 +50,8 @@ const blogSchema = new mongoose.Schema(
     },
 
     // ------------------------------
-    // Liste des utilisateurs qui ont consulté l'article (optionnel)
+    // Liste des utilisateurs qui ont consulté l'article
+    // (sert à suivre qui a vu l'article)
     // ------------------------------
     viewedBy: {
       type: [{ type: Schema.Types.ObjectId, ref: "User" }],

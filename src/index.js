@@ -1,23 +1,26 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 // oblogé de le mettre quand je suis chez sofip car probleme de certificat Proxy
 
-import express from "express"; // framework utilisé par le serveur node
-
-import dotenv from "dotenv"; // permet de lire les variables d'environnement contenues dans .env
-
+// framework utilisé par le serveur node
+import express from "express";
+// permet de lire les variables d'environnement contenues dans .env
+import dotenv from "dotenv";
+// permettre de lire le contenu des cookies
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
-import routes from "./routes/index.js"; // permet de préciser ou sont les routes
+// permet de préciser ou sont les routes
+import routes from "./routes/index.js";
 
-import { connectDB } from "./lib/db.js"; // récupère la connexion à la base de données
+// récupère la connexion à la base de données
+import { connectDB } from "./lib/db.js";
 
 // indique que l'on va utiliser .env
 dotenv.config();
 
 const PORT = process.env.PORT;
 
-// indique que l'application utilise express
+// indique que notre application utilise express
 const app = express();
 
 // indique que l'on va pouvoir traduire le JSON et que l'on va utiliser des cookies
