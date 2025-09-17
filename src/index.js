@@ -1,6 +1,3 @@
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-// oblogé de le mettre quand je suis chez sofip car probleme de certificat Proxy
-
 // framework utilisé par le serveur node
 import express from "express";
 // permet de lire les variables d'environnement contenues dans .env
@@ -14,7 +11,6 @@ import routes from "./routes/index.js";
 
 // récupère la connexion à la base de données
 import { connectDB } from "./lib/db.js";
-
 // indique que l'on va utiliser .env
 dotenv.config();
 

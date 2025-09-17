@@ -1,14 +1,15 @@
-// src/routes/index.js
 import express from "express";
+
 import userRoutes from "./user.route.js";
 import blogRoutes from "./blog.route.js";
-import ratingRoutes from "./rating.route.js"; // ⭐ nouvelle route
+import ratingRoutes from "./rating.route.js";
+import commentRoutes from "./comment.route.js";
 
 const router = express.Router();
 
-// Routes principales
-router.use("/user", userRoutes);
 router.use("/blog", blogRoutes);
-router.use("/rating", ratingRoutes); // ⭐ branchement des notes
+router.use("/user", userRoutes);
+router.use("/rating", ratingRoutes);
+router.use("/comment", commentRoutes);
 
 export default router;
